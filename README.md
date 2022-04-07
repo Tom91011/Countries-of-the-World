@@ -22,4 +22,4 @@ Using a data visualisation tool I hope to bring some of this data alive in a UI 
 
 ## Acknowledgments
 
-This App was originally inspired by [Frontend Mentor](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca).
+This app was originally inspired by [Frontend Mentor](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca).
