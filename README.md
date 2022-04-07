@@ -1,4 +1,4 @@
-# The Worlds Countries - listed in a tabular format using the REST Countries API
+# The World's Countries
 
 ## Overview
 
