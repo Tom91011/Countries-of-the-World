@@ -1,0 +1,16 @@
+$darkBlue: rgb(32,44,55);
+$mediumDarkBlue: rgb(32,44,55);
+$veryDarkBlue: rgb(17,21,23);
+$darkGray: rgb(133,133,133);
+$veryLightGray: rgb(250,250,250);
+$white: rgb(255,255,255);
+
+$barlow: 'Barlow', 'sans-serif';
+$tenorSans: 'Tenor Sans', 'sans-serif';
+
+@mixin flex($direction, $justifyContent) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justifyContent;
+    align-items: flex-start;
+}

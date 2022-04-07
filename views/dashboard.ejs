@@ -1,6 +1,43 @@
 <%- include("partials/head") -%>
   <body>
-      <h1>Countries of the World</h1>
+      <header class="header">
+        <h1>Countries of the World</h1>
+        <h2>Dark Mode</h2>
+      </header>
+      <main class="page">
+        <div class="filter-row page__filter-row">
+          <div class="filter-row__country">
+            <input  class="filter-row__input" type="text" placeholder="Search for a country">
+          </div>
+          <div class="filter-row__region">
+            <div id="filter-row__dropdown-switch dropdown-switch">
+              <h2>Filter by Region</h2>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="filter-row__region">
+              <h2 data="filter" class="filter-row__continent_hidden">All Countries</h2>
+              <h2 data="africa" class="filter-row__continent_hidden">Africa</h2>
+              <h2 data="americas" class="filter-row__continent_hidden">Americas</h2>
+              <h2 data="asia" class="filter-row__continent_hidden">Asia</h2>
+              <h2 data="europe" class="filter-row__continent_hidden">Europe</h2>
+              <h2 data="oceania" class="filter-row__continent_hidden">Oceania</h2>
+            </div>
+          </div>
+        </div>
+        <div class="countries page__countries">
+          <div class="country countries__country">
+            <div class="country__flag">
+              <img src="" alt="">
+            </div>
+            <div class="country__information">
+              <h2 class="country__name"></h2>
+              <h3 class="country__population"><strong class="country_bold">Population:</strong>400</h3>
+              <h3 class="country__region"><strong class="country_bold">Region:</strong>Europe</h3>
+              <h3 class="country__capital"><strong class="country_bold">Capital:</strong>London</h3>
+            </div>
+          </div>
+        </div>
+      </main>
 	<script src="/public/client/client.js"></script>
   </body>
 </html>

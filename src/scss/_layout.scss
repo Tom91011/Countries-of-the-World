@@ -1,3 +1,11 @@
-body {
-    color: blue;
+.filter-row {
+    @include flex(row, space-between);
+}
+
+.filter-row__continent_hidden {
+    display: none;
+}
+
+.country_bold {
+    font-size: 20px;
 }
