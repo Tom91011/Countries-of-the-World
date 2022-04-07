@@ -1,0 +1,1 @@
+alert("If this alert pops up then everything is working!")
