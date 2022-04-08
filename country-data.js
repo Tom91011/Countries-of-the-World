@@ -1,9 +1,14 @@
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+const Data = require('./models/Data')
 
 async function fetchCountryData() {
     let myObject = await fetch('https://restcountries.com/v3.1/all');
     let countriesData = await myObject.json();
-    console.log(countriesData[0].name);
+    let data = countriesData[0].name
+    const latestData = new Data ({
+        data
+    })
+    latestData.save()
 }
 
 // const timeout = setInterval(fetchCountryData,1000000000)
