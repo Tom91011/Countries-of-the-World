@@ -341,6 +341,12 @@ template {
   display: none;
 }
 
+body {
+  font-family: "Barlow", "sans-serif";
+  color: white;
+  font-size: 16px;
+}
+
 .filter-row {
   display: flex;
   flex-direction: row;
