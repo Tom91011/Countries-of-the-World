@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require('path')
+const { fetchCountryData } = require('./country-data.js')
 const dotenv = require("dotenv");
 dotenv.config();
 
