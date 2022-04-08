@@ -30,7 +30,12 @@
               <img src="" alt="">
             </div>
             <div class="country__information">
-              <h2 class="country__name"><%= country %></h2>
+
+       <% countries.forEach((country) => { %>
+        <h2 class="country__name"><%= country.country.common %></h2>
+      <% }) %>
+
+
               <h3 class="country__population"><strong class="country_bold">Population:</strong>400</h3>
               <h3 class="country__region"><strong class="country_bold">Region:</strong>Europe</h3>
               <h3 class="country__capital"><strong class="country_bold">Capital:</strong>London</h3>

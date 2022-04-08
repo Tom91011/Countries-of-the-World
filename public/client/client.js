@@ -22,3 +22,32 @@ while (i < 10) {
     cloneNode(countryTemplate, countriesContainer, data)
     i++
 }
+
+let countriesData = []
+
+
+    // fetch('https://restcountries.com/v3.1/all')
+    // .then(response => response.json())
+    // .then(data => console.log(data))
+    
+
+    getText('https://restcountries.com/v3.1/all')
+
+    async function getText(file) {
+        let myObject = await fetch(file);
+        // myObject = myObject.json
+        let myText = await myObject.json();
+        countriesData =  await myText
+        console.log(countriesData);
+
+        countriesData.forEach((country) => {console.log(country.name.common)})
+
+        console.log(countriesData.length);
+    }
+        // document.getElementById("demo").innerHTML = myText;
+
+
+// const countriesData = getCountriesData()
+
+
+
