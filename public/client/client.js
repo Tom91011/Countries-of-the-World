@@ -24,30 +24,18 @@ while (i < 10) {
 }
 
 let countriesData = []
-
-
     // fetch('https://restcountries.com/v3.1/all')
     // .then(response => response.json())
     // .then(data => console.log(data))
-    
 
-    getText('https://restcountries.com/v3.1/all')
+fetchData('https://restcountries.com/v3.1/all')
+async function fetchData(file) {
+    let fetchedData = await fetch(file);
+    let jsonData = await fetchedData.json();
+    countriesData =  await jsonData
+    console.log(countriesData);
+    console.log(countriesData.length);
+}
 
-    async function getText(file) {
-        let myObject = await fetch(file);
-        // myObject = myObject.json
-        let myText = await myObject.json();
-        countriesData =  await myText
-        console.log(countriesData);
-
-        countriesData.forEach((country) => {console.log(country.name.common)})
-
-        console.log(countriesData.length);
-    }
-        // document.getElementById("demo").innerHTML = myText;
-
-
+// document.getElementById("demo").innerHTML = countriesData;
 // const countriesData = getCountriesData()
-
-
-

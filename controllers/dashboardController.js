@@ -4,6 +4,7 @@ let data
 const dashboardView = async (req, res) => {
     try {        
         data = await Data.find({})
+        console.log(data.length);
         res.render("dashboard", {
             countries: data
         })

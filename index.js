@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path')
 const mongoose = require('mongoose');
-const { fetchCountryData } = require('./country-data.js')
+// const { fetchCountryData } = require('./country-data.js')
 const dotenv = require("dotenv");
 dotenv.config();
 
@@ -21,3 +21,14 @@ app.use('/', require('./routes/dashboard'))
 
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, console.log("Server connected to port: " + 3000))
+
+const io = require('socket.io')(server);
+
+io.on('connection', (socket) => {
+  console.log(socket.id + ' has connected');
+
+  socket.on('disconnect', () => {
+    console.log(`Socket ID: ${socket.id} has disconnected`);
+    socket.disconnect(socket.id)
+  });
+})
