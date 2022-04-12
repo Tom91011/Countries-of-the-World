@@ -6,14 +6,14 @@ async function fetchCountryData() {
     let countriesData = await myObject.json();
     // console.log(countriesData);
     let i = 0
-    // while (i < countriesData.length ) {
-    //     let country = countriesData[i].name
-    //     const newCountry = new Country ({
-    //         country
-    //     })
-    //     newCountry.save()
-    //     i++
-    // }
+    while (i < countriesData.length ) {
+        let country = countriesData[i]
+        const newCountry = new Country ({
+            country
+        })
+        newCountry.save()
+        i++
+    }
 
     
 }
