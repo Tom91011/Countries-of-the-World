@@ -1,5 +1,5 @@
 const Data = require('../models/Country')
-let data
+let countries
 
 const dashboardView = async (req, res) => {
     try {        
@@ -13,6 +13,11 @@ const dashboardView = async (req, res) => {
       }  
 }
 
+const sendCountries = () => {
+    return (countries)
+}
+
 module.exports = {
-    dashboardView
+    dashboardView,
+    sendCountries
 }
