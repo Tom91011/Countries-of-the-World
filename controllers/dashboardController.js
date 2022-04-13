@@ -4,7 +4,6 @@ let countries
 const dashboardView = async (req, res) => {
     try {        
         countries = await Data.find({})
-        console.log(countries.length);
         res.render("dashboard", {
             countries: countries
         })
@@ -13,7 +12,8 @@ const dashboardView = async (req, res) => {
       }  
 }
 
-const sendCountries = () => {
+const sendCountries = async () => {
+    countries = await Data.aggregate([{$sort : {country: 1}}])
     return (countries)
 }
 

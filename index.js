@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path')
 const mongoose = require('mongoose');
-// const { fetchCountryData } = require('./country-data.js')
+const { fetchCountryData } = require('./country-data.js')
 const dotenv = require("dotenv");
 dotenv.config();
 
@@ -26,12 +26,12 @@ const server = app.listen(PORT, console.log("Server connected to port: " + 3000)
 
 const io = require('socket.io')(server);
 
-io.on('connection', (socket) => {
+io.on('connection', async (socket) => {
   let socketId = socket.id
-  const sendCountriesData = sendCountries()
+  const countriesData = await sendCountries()
   console.log(socketId + ' has connected');
 
-  io.to(socket.id).emit('sendCountriesData', sendCountriesData)
+  io.to(socket.id).emit('sendCountriesData', countriesData)
 
   socket.on('disconnect', () => {
     console.log(`Socket ID: ${socket.id} has disconnected`);
