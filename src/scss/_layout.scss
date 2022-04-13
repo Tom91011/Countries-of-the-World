@@ -13,3 +13,13 @@
 .country_hidden {
     display: none;
 }
+
+.countries {
+    @include flex(row, space-between);
+    flex-wrap: wrap; 
+    margin: auto;
+    width: 1200px;    
+    .country {
+        width: 30%;
+    }    
+}

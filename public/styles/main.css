@@ -366,4 +366,17 @@ body {
   display: none;
 }
 
+.countries {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin: auto;
+  width: 1200px;
+}
+.countries .country {
+  width: 30%;
+}
+
 /*# sourceMappingURL=main.css.map */

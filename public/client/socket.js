@@ -16,13 +16,16 @@ const cloneNode = (template, container, country) => {
     const countryName = newCountry.querySelector(".country__name")
     const countryPopulation = newCountry.querySelector(".country__population")
     const countryCapital = newCountry.querySelector(".country__capital")
+    const countryFlag = newCountry.querySelector(".country__flag")
+    countryFlag.src = `./public/flags/4x3/${country.country.cca2}.svg`
+    countryFlag.alt = `Flag of ${country.country.name.common}`
     addTextContent(countryName, `${country.country.name.common}`)
     addTextContent(countryPopulation, `Population: ${country.country.population}`)
     if(country.country.hasOwnProperty('capital')) {
         addTextContent(countryCapital, `Capital: ${country.country.capital[0]}`)
     } else {
         addTextContent(countryCapital, `Capital: n/a`)
-    }
+    }    
     unhideElement(newCountry, "country_hidden")
 }
 
@@ -50,8 +53,6 @@ const handleScrollThrottle = () => {
             i = countriesToShowPerLoad 
         }
         }
-      
-
   } 
 }
 
