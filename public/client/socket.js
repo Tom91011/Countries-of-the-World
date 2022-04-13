@@ -1,6 +1,7 @@
 const socket = io();
-let countriesDataFromDb = []
-let initialCountriesToShow = 6
+let countriesData = []
+let countriesToShowPerLoad = 6
+let lastCountryDisplayed = countriesToShowPerLoad - 1
 
 const countryTemplate = document.querySelector(".country-template")
 const countriesContainer = document.querySelector(".countries")
@@ -25,10 +26,45 @@ const cloneNode = (template, container, country) => {
     unhideElement(newCountry, "country_hidden")
 }
 
-socket.on('sendCountriesData', (countriesData) => {
-    countriesDataFromDb = countriesData
+socket.on('sendCountriesData', (countriesDataFromDb) => {
+    countriesData = countriesDataFromDb
 
-    for(let i = 0; i < initialCountriesToShow; i++) {
-        cloneNode(countryTemplate, countriesContainer, countriesData[i])
+    for(let i = 0; i < countriesToShowPerLoad; i++) {
+        cloneNode(countryTemplate, countriesContainer, countriesDataFromDb[i])
     }
 })
+// Stops the scroll repeating multiple times
+let throttleTimer;
+
+const handleScrollThrottle = () => {
+  const scrollBuffer = 400
+  
+  if(window.innerHeight + window.scrollY >= document.body.scrollHeight - scrollBuffer){
+     
+        for(let i = 0; i < countriesToShowPerLoad; i++) {
+            if(lastCountryDisplayed != countriesData.length - 1) {
+            cloneNode(countryTemplate, countriesContainer, countriesData[lastCountryDisplayed + 1])
+            lastCountryDisplayed += 1
+        } else {
+            console.log("Thats all the countries");
+            i = countriesToShowPerLoad 
+        }
+        }
+      
+
+  } 
+}
+
+const throttle = (handleScrollThrottle, time) => {
+    
+  if (throttleTimer) return;
+    throttleTimer = true;
+    setTimeout(() => {
+        handleScrollThrottle();
+        throttleTimer = false;
+    }, time);
+}
+ 
+window.addEventListener("scroll", () => {     
+  throttle(handleScrollThrottle, 250);
+});
