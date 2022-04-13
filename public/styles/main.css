@@ -362,4 +362,8 @@ body {
   font-size: 20px;
 }
 
+.country_hidden {
+  display: none;
+}
+
 /*# sourceMappingURL=main.css.map */
