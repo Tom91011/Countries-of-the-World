@@ -1,4 +1,6 @@
 const socket = io();
+let countriesDataFromDb = []
+let initialCountriesToShow = 6
 
 const countryTemplate = document.querySelector(".country-template")
 const countriesContainer = document.querySelector(".countries")
@@ -24,7 +26,9 @@ const cloneNode = (template, container, country) => {
 }
 
 socket.on('sendCountriesData', (countriesData) => {
-    countriesData.forEach((country) => {
-        cloneNode(countryTemplate, countriesContainer, country)
-    })
+    countriesDataFromDb = countriesData
+
+    for(let i = 0; i < initialCountriesToShow; i++) {
+        cloneNode(countryTemplate, countriesContainer, countriesData[i])
+    }
 })
