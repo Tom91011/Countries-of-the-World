@@ -2,18 +2,20 @@ const socket = io();
 const filterInput = document.querySelector(".filter-row__input")
 let countriesData = []
 const countryNameArray = []
-let countriesToShowPerLoad = 6
+const countriesToShowPerLoad = 6
 let lastCountryDisplayed = countriesToShowPerLoad - 1
 
 const countryTemplate = document.querySelector(".country-template")
 const countriesContainer = document.querySelector(".countries")
-
 
 const unhideElement = (element, cssClass) => element.classList.remove(cssClass)
 const addTextContent = (element, text) => element.textContent = text
 
 const cloneNode = (template, container, country) => {
     const clonedTemplate = template.cloneNode(true)
+    clonedTemplate.classList.add("country")
+    clonedTemplate.classList.remove("country-template")
+
     container.appendChild(clonedTemplate)
     newCountry = container.lastChild
     const countryName = newCountry.querySelector(".country__name")
