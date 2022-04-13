@@ -1,10 +1,13 @@
 const socket = io();
+const filterInput = document.querySelector(".filter-row__input")
 let countriesData = []
+const countryNameArray = []
 let countriesToShowPerLoad = 6
 let lastCountryDisplayed = countriesToShowPerLoad - 1
 
 const countryTemplate = document.querySelector(".country-template")
 const countriesContainer = document.querySelector(".countries")
+
 
 const unhideElement = (element, cssClass) => element.classList.remove(cssClass)
 const addTextContent = (element, text) => element.textContent = text
@@ -35,6 +38,11 @@ socket.on('sendCountriesData', (countriesDataFromDb) => {
     for(let i = 0; i < countriesToShowPerLoad; i++) {
         cloneNode(countryTemplate, countriesContainer, countriesDataFromDb[i])
     }
+
+    countriesData.forEach(country => {
+        countryNameArray.push(country.country.name.common.toLowerCase())
+    })
+    console.log(countryNameArray);
 })
 // Stops the scroll repeating multiple times
 let throttleTimer;
