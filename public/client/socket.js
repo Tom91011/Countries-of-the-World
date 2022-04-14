@@ -11,7 +11,7 @@ const countriesContainer = document.querySelector(".countries")
 const unhideElement = (element, cssClass) => element.classList.remove(cssClass)
 const addTextContent = (element, text) => element.textContent = text
 
-const cloneNode = (template, container, country) => {
+const cloneNode = (template, container, countryData) => {
     const clonedTemplate = template.cloneNode(true)
     clonedTemplate.classList.add("country")
     clonedTemplate.classList.remove("country-template")
@@ -24,11 +24,11 @@ const cloneNode = (template, container, country) => {
     const countryFlag = newCountry.querySelector(".country__flag")
     // countryFlag.src = `./public/flags/4x3/${country.country.cca2}.svg`
     // countryFlag.src = country.country.flags.svg
-    countryFlag.alt = `Flag of ${country.country.name.common}`
-    addTextContent(countryName, `${country.country.name.common}`)
-    addTextContent(countryPopulation, `Population: ${country.country.population}`)
-    if(country.country.hasOwnProperty('capital')) {
-        addTextContent(countryCapital, `Capital: ${country.country.capital[0]}`)
+    countryFlag.alt = `Flag of ${countryData.country.name.common}`
+    addTextContent(countryName, `${countryData.country.name.common}`)
+    addTextContent(countryPopulation, `Population: ${countryData.country.population}`)
+    if(countryData.country.hasOwnProperty('capital')) {
+        addTextContent(countryCapital, `Capital: ${countryData.country.capital[0]}`)
     } else {
         addTextContent(countryCapital, `Capital: n/a`)
     }    
