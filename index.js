@@ -24,7 +24,7 @@ mongoose
   .catch((err) => console.log(err));
 
 app.use('/', require('./routes/dashboard'))
-app.use(haltOnTimedout)
+// app.use(haltOnTimedout)
 
 function haltOnTimedout (req, res, next) {
   if (!req.timedout) next()
