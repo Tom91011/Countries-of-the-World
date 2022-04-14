@@ -35,7 +35,7 @@ const handleScrollThrottle = () => {
         for(let i = 0; i < countriesToShowPerLoad; i++) {
             if(lastCountryDisplayed != countriesData.length - 1) {
             cloneNode(countryTemplate, countriesContainer, countriesData[lastCountryDisplayed + 1])
-            console.log("cloned new country");
+            console.log(countriesData[lastCountryDisplayed + 1]);
             lastCountryDisplayed += 1
             } else {
                 console.log("Thats all the countries");
