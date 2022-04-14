@@ -70,7 +70,7 @@ const cloneNode = (template, container, countryData) => {
     const countryPopulation = newCountry.querySelector(".country__population")
     const countryCapital = newCountry.querySelector(".country__capital")
     const countryFlag = newCountry.querySelector(".country__flag")
-    countryFlag.src = `./public/flags/4x3/${countryData.country.cca2}.svg`
+    countryFlag.src = `./public/flags/4x3/${countryData.country.cca2.toLowerCase()}.svg`
     // countryFlag.src = country.country.flags.svg
     countryFlag.alt = `Flag of ${countryData.country.name.common}`
     addTextContent(countryName, `${countryData.country.name.common}`)

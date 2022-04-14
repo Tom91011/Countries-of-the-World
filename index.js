@@ -41,7 +41,6 @@ io.on('connection', async (socket) => {
   console.log(socketId + ' has connected');
 
   io.to(socket.id).emit('sendCountriesData', countriesData)
-  console.log(countriesData[0]);
 
   socket.on('disconnect', () => {
     console.log(`Socket ID: ${socket.id} has disconnected`);
