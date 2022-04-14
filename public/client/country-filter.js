@@ -20,9 +20,12 @@ export function countryFilter() {
         // if statment that checks if the search box is empty, if it is then just load a set amount of articles
         // to do: reshow the articles that were previously on the screen 
         if(searchBoxValue === "") {
+            countriesDisplayed = 0
             for(let i = 0; i < countriesToShowPerLoad; i++) {
                 cloneNode(countryTemplate, countriesContainer, countriesData[i])
+                console.log(countriesData[i]);
             }
+
         } else {
             searchArray.forEach((country) => {
                 cloneNode(countryTemplate, countriesContainer, country)

@@ -1,6 +1,6 @@
 
-// import { countryFilter } from './country-filter.js'
-// countryFilter()
+import { countryFilter } from './country-filter.js'
+countryFilter()
 
 // fetchData('https://restcountries.com/v3.1/all')
 // async function fetchData(file) {
