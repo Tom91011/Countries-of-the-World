@@ -13,6 +13,7 @@ const dashboardView = async (req, res) => {
 const sendCountries = async () => {
     countries = await Data.aggregate([{$sort : {country: 1}}])
     console.log("in dashboard sendCountries function");
+    console.log(countries[0]);
     return (countries)
 }
 
