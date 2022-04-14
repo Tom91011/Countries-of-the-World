@@ -65,7 +65,7 @@ window.addEventListener("scroll", () => {
 const cloneNode = (template, container, countryData) => {
     console.log(countriesData);
     console.log(countriesData[countriesDisplayed]);
-    // console.log(countriesData[countriesDisplayed].country.name.common.toLowerCase());
+    console.log(countriesData[countriesDisplayed].country.name.common.toLowerCase());
     // console.log(countryNameArray[countriesDisplayed]);
     const nextCountry = countryNameArray[countriesDisplayed]
     console.log(nextCountry);
