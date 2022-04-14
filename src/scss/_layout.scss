@@ -20,6 +20,17 @@
     margin: auto;
     width: 1200px;    
     .country {
+        padding: 5px;
         width: 30%;
     }    
+}
+
+.country__image-container {
+    height: 270px;
+    width: 360px;
+    .country__flag {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
 }

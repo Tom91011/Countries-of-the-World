@@ -10,7 +10,7 @@ dotenv.config();
 const { sendCountries} = require('./controllers/dashboardController')
 
 app.set('view engine', 'ejs')
-app.use(timeout('5s'))
+app.use(timeout('10s'))
 app.use('/public', express.static(path.join(__dirname, './public')))
 app.use(haltOnTimedout)
 app.use(express.urlencoded({ extended: false }));

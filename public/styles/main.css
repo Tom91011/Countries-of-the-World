@@ -376,7 +376,18 @@ body {
   width: 1200px;
 }
 .countries .country {
+  padding: 5px;
   width: 30%;
+}
+
+.country__image-container {
+  height: 270px;
+  width: 360px;
+}
+.country__image-container .country__flag {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 /*# sourceMappingURL=main.css.map */
