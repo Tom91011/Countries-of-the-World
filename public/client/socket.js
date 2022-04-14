@@ -79,17 +79,17 @@ const cloneNode = (template, container, countryData) => {
     const countryRegion = newCountry.querySelector(".country__region")
     const countryFlag = newCountry.querySelector(".country__flag")
    
-    addTextContent(countryName, `${countriesData[countriesDisplayed].name.common}`)
-    addTextContent(countryPopulation, `Population: ${countriesData[countriesDisplayed].population}`)
-    addTextContent(countryRegion, `Region: ${countriesData[countriesDisplayed].region}`)
-    if(countriesData[countriesDisplayed].hasOwnProperty('capital')) {
-        addTextContent(countryCapital, `Capital: ${countriesData[countriesDisplayed].capital[0]}`)
+    addTextContent(countryName, `${countriesData[countriesDisplayed].country.name.common}`)
+    addTextContent(countryPopulation, `Population: ${countriesData[countriesDisplayed].country.population}`)
+    addTextContent(countryRegion, `Region: ${countriesData[countriesDisplayed].country.region}`)
+    if(countriesData[countriesDisplayed].country.hasOwnProperty('capital')) {
+        addTextContent(countryCapital, `Capital: ${countriesData[countriesDisplayed].country.capital[0]}`)
     } else {
         addTextContent(countryCapital, `Capital: n/a`)
     }    
-     countryFlag.src = `./public/flags/4x3/${countriesData[countriesDisplayed].cca2.toLowerCase()}.svg`
+     countryFlag.src = `./public/flags/4x3/${countriesData[countriesDisplayed].country.cca2.toLowerCase()}.svg`
     //  countryFlag.src = countriesData[countriesDisplayed].country.flags.svg
-     countryFlag.alt = `Flag of ${countriesData[countriesDisplayed].name.common}`
+     countryFlag.alt = `Flag of ${countriesData[countriesDisplayed].country.name.common}`
     //  lastCountryDisplayed +=1
     unhideElement(newCountry, "country_hidden")
     countriesDisplayed += 1
