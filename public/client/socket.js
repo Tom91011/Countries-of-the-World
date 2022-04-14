@@ -1,11 +1,12 @@
 const socket = io();
-const filterInput = document.querySelector(".filter-row__input")
+
 let countriesData = []
 const countryNameArray = []
 const countriesToShowPerLoad = 6
 let countriesDisplayed = 0
 let lastCountryDisplayed = countriesToShowPerLoad - 1
 
+const filterInput = document.querySelector(".filter-row__input")
 const countryTemplate = document.querySelector(".country-template")
 const countriesContainer = document.querySelector(".countries")
 
@@ -14,7 +15,6 @@ const addTextContent = (element, text) => element.textContent = text
 
 socket.on('sendCountriesData', async (countriesDataFromDb) => {
     countriesData = countriesDataFromDb
-    console.log(countriesData)
 
     await countriesData.forEach(country => {
         countryNameArray.push(country.country.name.common.toLowerCase())
@@ -23,7 +23,6 @@ socket.on('sendCountriesData', async (countriesDataFromDb) => {
     for(let i = 0; i < countriesToShowPerLoad; i++) {
         cloneNode(countryTemplate, countriesContainer, countriesDataFromDb[i])
     }
-    console.log(countryNameArray);
 })
 // Stops the scroll repeating multiple times
 let throttleTimer;
@@ -61,19 +60,6 @@ window.addEventListener("scroll", () => {
 });
 
 const cloneNode = (template, container, countryData) => {
-    console.log(countriesData);
-    console.log(countryData);
-    console.log(countryData.country.name.common.toLowerCase());
-    // console.log(countryNameArray[countriesDisplayed]);
-    // const nextCountry = countryNameArray[countriesDisplayed]
-    // console.log(nextCountry);
-    // console.log(countryNameArray.findIndex((nextCountry) => {
-    //     return nextCountry === countriesData[countriesDisplayed].country.name.common.toLowerCase()
-    // }) );
-    // let nextCountryIndex = countryNameArray.findIndex((nextCountry) => {
-    //     return nextCountry === countriesData[countriesDisplayed].country.name.common.toLowerCase()
-    // })
-   
     const clonedTemplate = template.cloneNode(true)
     clonedTemplate.classList.add("country")
     clonedTemplate.classList.remove("country-template")
@@ -94,10 +80,9 @@ const cloneNode = (template, container, countryData) => {
     } else {
         addTextContent(countryCapital, `Capital: n/a`)
     }    
-     countryFlag.src = `./public/flags/4x3/${countryData.country.cca2.toLowerCase()}.svg`
-    //  countryFlag.src = countryData.country.flags.svg
-     countryFlag.alt = `Flag of ${countryData.country.name.common}`
-     lastCountryDisplayed +=1
+    countryFlag.src = `./public/flags/4x3/${countryData.country.cca2.toLowerCase()}.svg`
+    countryFlag.alt = `Flag of ${countryData.country.name.common}`
+    lastCountryDisplayed +=1
     unhideElement(newCountry, "country_hidden")
     countriesDisplayed += 1
 }

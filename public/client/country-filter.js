@@ -24,7 +24,6 @@ export function countryFilter() {
             lastCountryDisplayed = countriesToShowPerLoad - 1
             for(let i = 0; i < countriesToShowPerLoad; i++) {
                 cloneNode(countryTemplate, countriesContainer, countriesData[i])
-                console.log(countriesData);
             }
 
         } else {
