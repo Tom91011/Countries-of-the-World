@@ -65,7 +65,16 @@ window.addEventListener("scroll", () => {
 const cloneNode = (template, container, countryData) => {
     console.log(countriesData);
     console.log(countriesData[countriesDisplayed]);
-    console.log(countriesData[countriesDisplayed].name);
+    // console.log(countriesData[countriesDisplayed].country.name.common.toLowerCase());
+    // console.log(countryNameArray[countriesDisplayed]);
+    const nextCountry = countryNameArray[countriesDisplayed]
+    console.log(nextCountry);
+    console.log(countryNameArray.findIndex((nextCountry) => {
+        return nextCountry === countriesData[countriesDisplayed].country.name.common.toLowerCase()
+    }) );
+    let nextCountryIndex = countryNameArray.findIndex((nextCountry) => {
+        return nextCountry === countriesData[countriesDisplayed].country.name.common.toLowerCase()
+    })
    
     const clonedTemplate = template.cloneNode(true)
     clonedTemplate.classList.add("country")
@@ -79,17 +88,17 @@ const cloneNode = (template, container, countryData) => {
     const countryRegion = newCountry.querySelector(".country__region")
     const countryFlag = newCountry.querySelector(".country__flag")
    
-    addTextContent(countryName, `${countriesData[countriesDisplayed].country.name.common}`)
-    addTextContent(countryPopulation, `Population: ${countriesData[countriesDisplayed].country.population}`)
-    addTextContent(countryRegion, `Region: ${countriesData[countriesDisplayed].country.region}`)
-    if(countriesData[countriesDisplayed].country.hasOwnProperty('capital')) {
-        addTextContent(countryCapital, `Capital: ${countriesData[countriesDisplayed].country.capital[0]}`)
+    addTextContent(countryName, `${countriesData[nextCountryIndex].country.name.common}`)
+    addTextContent(countryPopulation, `Population: ${countriesData[nextCountryIndex].country.population}`)
+    addTextContent(countryRegion, `Region: ${countriesData[nextCountryIndex].country.region}`)
+    if(countriesData[nextCountryIndex].country.hasOwnProperty('capital')) {
+        addTextContent(countryCapital, `Capital: ${countriesData[nextCountryIndex].country.capital[0]}`)
     } else {
         addTextContent(countryCapital, `Capital: n/a`)
     }    
-     countryFlag.src = `./public/flags/4x3/${countriesData[countriesDisplayed].country.cca2.toLowerCase()}.svg`
-    //  countryFlag.src = countriesData[countriesDisplayed].country.flags.svg
-     countryFlag.alt = `Flag of ${countriesData[countriesDisplayed].country.name.common}`
+     countryFlag.src = `./public/flags/4x3/${countriesData[nextCountryIndex].country.cca2.toLowerCase()}.svg`
+    //  countryFlag.src = countriesData[nextCountryIndex].country.flags.svg
+     countryFlag.alt = `Flag of ${countriesData[nextCountryIndex].country.name.common}`
     //  lastCountryDisplayed +=1
     unhideElement(newCountry, "country_hidden")
     countriesDisplayed += 1
