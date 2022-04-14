@@ -34,14 +34,17 @@ const handleScrollThrottle = () => {
   const scrollBuffer = 400
   
   if(window.innerHeight + window.scrollY >= document.body.scrollHeight - scrollBuffer){
+     
         for(let i = 0; i < countriesToShowPerLoad; i++) {
-        if(lastCountryDisplayed != countriesData.length - 1) {
-        cloneNode(countryTemplate, countriesContainer, countriesData[lastCountryDisplayed + 1])           
-        } else {
-            console.log("Thats all the countries");
-            i = countriesToShowPerLoad 
+            if(lastCountryDisplayed != countriesData.length - 1) {
+            cloneNode(countryTemplate, countriesContainer, countriesData[lastCountryDisplayed + 1])
+            console.log("cloned new country");
+           
+            } else {
+                console.log("Thats all the countries");
+                i = countriesToShowPerLoad 
+            }
         }
-    }
   } 
 }
 
@@ -60,6 +63,8 @@ window.addEventListener("scroll", () => {
 });
 
 const cloneNode = (template, container, countryData) => {
+    console.log(countriesData);
+    console.log(countryData.country);
     const clonedTemplate = template.cloneNode(true)
     clonedTemplate.classList.add("country")
     clonedTemplate.classList.remove("country-template")
@@ -83,6 +88,7 @@ const cloneNode = (template, container, countryData) => {
      countryFlag.src = `./public/flags/4x3/${countriesData[countriesDisplayed].country.cca2.toLowerCase()}.svg`
     //  countryFlag.src = countriesData[countriesDisplayed].country.flags.svg
      countryFlag.alt = `Flag of ${countriesData[countriesDisplayed].country.name.common}`
+    //  lastCountryDisplayed +=1
     unhideElement(newCountry, "country_hidden")
     countriesDisplayed += 1
 }
