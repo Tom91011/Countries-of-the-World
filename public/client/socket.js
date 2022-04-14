@@ -13,6 +13,7 @@ const addTextContent = (element, text) => element.textContent = text
 
 socket.on('sendCountriesData', (countriesDataFromDb) => {
     countriesData = countriesDataFromDb
+    console.log(countriesData)
 
     for(let i = 0; i < countriesToShowPerLoad; i++) {
         cloneNode(countryTemplate, countriesContainer, countriesDataFromDb[i])
