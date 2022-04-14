@@ -3,6 +3,7 @@ const filterInput = document.querySelector(".filter-row__input")
 let countriesData = []
 const countryNameArray = []
 const countriesToShowPerLoad = 6
+let countriesDisplayed = 0
 let lastCountryDisplayed = countriesToShowPerLoad - 1
 
 const countryTemplate = document.querySelector(".country-template")
@@ -11,17 +12,19 @@ const countriesContainer = document.querySelector(".countries")
 const unhideElement = (element, cssClass) => element.classList.remove(cssClass)
 const addTextContent = (element, text) => element.textContent = text
 
-socket.on('sendCountriesData', (countriesDataFromDb) => {
+socket.on('sendCountriesData', async (countriesDataFromDb) => {
     countriesData = countriesDataFromDb
     console.log(countriesData)
+
+    await countriesData.forEach(country => {
+        countryNameArray.push(country.country.name.common.toLowerCase())
+    })
 
     for(let i = 0; i < countriesToShowPerLoad; i++) {
         cloneNode(countryTemplate, countriesContainer, countriesDataFromDb[i])
     }
 
-    countriesData.forEach(country => {
-        countryNameArray.push(country.country.name.common.toLowerCase())
-    })
+
     console.log(countryNameArray);
 })
 // Stops the scroll repeating multiple times
@@ -31,17 +34,14 @@ const handleScrollThrottle = () => {
   const scrollBuffer = 400
   
   if(window.innerHeight + window.scrollY >= document.body.scrollHeight - scrollBuffer){
-     
         for(let i = 0; i < countriesToShowPerLoad; i++) {
-            if(lastCountryDisplayed != countriesData.length - 1) {
-            cloneNode(countryTemplate, countriesContainer, countriesData[lastCountryDisplayed + 1])
-            console.log(countriesData[lastCountryDisplayed + 1]);
-            lastCountryDisplayed += 1
-            } else {
-                console.log("Thats all the countries");
-                i = countriesToShowPerLoad 
-            }
+        if(lastCountryDisplayed != countriesData.length - 1) {
+        cloneNode(countryTemplate, countriesContainer, countriesData[lastCountryDisplayed + 1])           
+        } else {
+            console.log("Thats all the countries");
+            i = countriesToShowPerLoad 
         }
+    }
   } 
 }
 
@@ -57,13 +57,9 @@ const throttle = (handleScrollThrottle, time) => {
  
 window.addEventListener("scroll", () => {     
   throttle(handleScrollThrottle, 250);
-// cloneNode(countryTemplate, countriesContainer, countriesData[lastCountryDisplayed + 1])
-// lastCountryDisplayed += 1
 });
 
 const cloneNode = (template, container, countryData) => {
-    console.log(countriesData);
-    console.log(countryData.country);
     const clonedTemplate = template.cloneNode(true)
     clonedTemplate.classList.add("country")
     clonedTemplate.classList.remove("country-template")
@@ -73,17 +69,20 @@ const cloneNode = (template, container, countryData) => {
     const countryName = newCountry.querySelector(".country__name")
     const countryPopulation = newCountry.querySelector(".country__population")
     const countryCapital = newCountry.querySelector(".country__capital")
+    const countryRegion = newCountry.querySelector(".country__region")
     const countryFlag = newCountry.querySelector(".country__flag")
    
-    addTextContent(countryName, `${countryData.country.name.common}`)
-    addTextContent(countryPopulation, `Population: ${countryData.country.population}`)
-    if(countryData.country.hasOwnProperty('capital')) {
-        addTextContent(countryCapital, `Capital: ${countryData.country.capital[0]}`)
+    addTextContent(countryName, `${countriesData[countriesDisplayed].country.name.common}`)
+    addTextContent(countryPopulation, `Population: ${countriesData[countriesDisplayed].country.population}`)
+    addTextContent(countryRegion, `Region: ${countriesData[countriesDisplayed].country.region}`)
+    if(countriesData[countriesDisplayed].country.hasOwnProperty('capital')) {
+        addTextContent(countryCapital, `Capital: ${countriesData[countriesDisplayed].country.capital[0]}`)
     } else {
         addTextContent(countryCapital, `Capital: n/a`)
     }    
-     // countryFlag.src = `./public/flags/4x3/${countryData.country.cca2.toLowerCase()}.svg`
-     countryFlag.src = countryData.country.flags.svg
-     countryFlag.alt = `Flag of ${countryData.country.name.common}`
+     countryFlag.src = `./public/flags/4x3/${countriesData[countriesDisplayed].country.cca2.toLowerCase()}.svg`
+    //  countryFlag.src = countriesData[countriesDisplayed].country.flags.svg
+     countryFlag.alt = `Flag of ${countriesData[countriesDisplayed].country.name.common}`
     unhideElement(newCountry, "country_hidden")
+    countriesDisplayed += 1
 }
