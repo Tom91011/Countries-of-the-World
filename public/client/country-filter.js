@@ -21,9 +21,10 @@ export function countryFilter() {
         // to do: reshow the articles that were previously on the screen 
         if(searchBoxValue === "") {
             countriesDisplayed = 0
+            lastCountryDisplayed = countriesToShowPerLoad - 1
             for(let i = 0; i < countriesToShowPerLoad; i++) {
                 cloneNode(countryTemplate, countriesContainer, countriesData[i])
-                console.log(countriesData[i]);
+                console.log(countriesData);
             }
 
         } else {
