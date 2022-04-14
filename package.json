@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/Tom91011/MVC-Boiler#readme",
   "dependencies": {
+    "connect-timeout": "^1.9.0",
     "dotenv": "^16.0.0",
     "ejs": "^3.1.6",
     "express": "^4.17.3",

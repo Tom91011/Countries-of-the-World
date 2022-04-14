@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const timeout = require('connect-timeout')
 const path = require('path')
 const mongoose = require('mongoose');
 const { fetchCountryData } = require('./country-data.js')
@@ -9,8 +10,11 @@ dotenv.config();
 const { sendCountries} = require('./controllers/dashboardController')
 
 app.set('view engine', 'ejs')
+app.use(timeout('5s'))
 app.use('/public', express.static(path.join(__dirname, './public')))
+app.use(haltOnTimedout)
 app.use(express.urlencoded({ extended: false }));
+app.use(haltOnTimedout)
 
 // Mongo DB conncetion
 const database = process.env.MONGODB_DATABASE_ACCESS;
@@ -20,6 +24,11 @@ mongoose
   .catch((err) => console.log(err));
 
 app.use('/', require('./routes/dashboard'))
+app.use(haltOnTimedout)
+
+function haltOnTimedout (req, res, next) {
+  if (!req.timedout) next()
+}
 
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, console.log("Server connected to port: " + 3000))
