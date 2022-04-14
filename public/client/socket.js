@@ -63,8 +63,9 @@ window.addEventListener("scroll", () => {
 });
 
 const cloneNode = (template, container, countryData) => {
-    console.log(countriesData[countriesDisplayed].country.name.common);
     console.log(countriesData);
+    console.log(countriesData[countriesDisplayed].country);
+   
     const clonedTemplate = template.cloneNode(true)
     clonedTemplate.classList.add("country")
     clonedTemplate.classList.remove("country-template")
