@@ -82,8 +82,8 @@ const cloneNode = (template, container, countryData) => {
     } else {
         addTextContent(countryCapital, `Capital: n/a`)
     }    
-     countryFlag.src = `./public/flags/4x3/${countryData.country.cca2.toLowerCase()}.svg`
-    //  countryFlag.src = countryData.country.flags.svg
+     // countryFlag.src = `./public/flags/4x3/${countryData.country.cca2.toLowerCase()}.svg`
+     countryFlag.src = countryData.country.flags.svg
      countryFlag.alt = `Flag of ${countryData.country.name.common}`
     unhideElement(newCountry, "country_hidden")
 }
