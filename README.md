@@ -1,10 +1,12 @@
-# The World's Countries
+# [The World's Countries]
 
 ## Overview
 
 I will build a 'Countries of the world' app listing all the countries in a tabular format using the REST Countries API, I will then link various other data such as the weather & exchange rates using other readily available 3rd part APIs. 
 
 Using a data visualisation tool I hope to bring some of this data alive in a UI friendly way.
+
+Currently hosted [here]
 
 ### It will be built with
 
@@ -23,3 +25,5 @@ Using a data visualisation tool I hope to bring some of this data alive in a UI 
 ## Acknowledgments
 
 This app was originally inspired by [Frontend Mentor](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca).
+
+[here]: https://countries-in-the-world.herokuapp.com/
