@@ -1,4 +1,4 @@
-# [The World's Countries]
+# The World's Countries
 
 ## Overview
 
@@ -27,3 +27,7 @@ Currently hosted [here]
 This app was originally inspired by [Frontend Mentor](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca).
 
 [here]: https://countries-in-the-world.herokuapp.com/
+
+## Current status
+
+This is currently on hold as I am learning Angular, Once I know enough I intend to create a git branch on this project and implement Angular.
